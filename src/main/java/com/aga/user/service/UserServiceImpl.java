@@ -31,14 +31,12 @@ public class UserServiceImpl implements UserService{
     private User getUserFromExternalClient(String login) {
         try {
             log.debug("Sending request GET user by login: {}", login);
-            User user =  userExternalClient.getUserByLogin(login);
+            User user =  userExternalClient.getUserByLogin(login).getBody();
             log.debug("Response GET user by login: {}", user);
             return user;
         } catch (FeignException ex) {
             log.error("Error processing request GET user by login: {} - {}", login, ex.getMessage());
-            HttpStatus httpStatus = HttpStatus.valueOf(ex.status());
-
-            if (HttpStatus.NOT_FOUND.equals(httpStatus)) {
+            if (HttpStatus.NOT_FOUND.value() == ex.status()) {
                 throw UserException.UserExceptionFactory.getException(UserExceptionEnum.USER_NOT_FOUND_EXCEPTION, login);
             }
             else {

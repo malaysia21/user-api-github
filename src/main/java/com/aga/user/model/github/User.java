@@ -2,6 +2,7 @@ package com.aga.user.model.github;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.ZonedDateTime;
@@ -9,6 +10,7 @@ import java.time.ZonedDateTime;
 @Data
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Builder
 public class User {
 
     private String login;

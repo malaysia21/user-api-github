@@ -15,9 +15,9 @@ import java.util.function.Function;
 @Slf4j
 public class UserRequestCountRepositoryImpl implements UserRequestCountRepository {
 
-    private static final String FUNCTION_NAME = "users.update_req_counter";
+    private static final String FUNCTION_NAME = "users.update_request_count";
     private static final String IN_LOGIN = "inLogin";
-    private static final String OUT_COUNTER = "outReqCounter";
+    private static final String OUT_COUNTER = "outReqCount";
 
     @PersistenceContext
     private EntityManager entityManager;
